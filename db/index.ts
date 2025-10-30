@@ -21,10 +21,9 @@ import User from './models/users';
 import schema from './schema';
 
 // Select adapter based on platform
-const isWeb = typeof document !== 'undefined' || Platform.OS === 'web' || !Platform.OS; // fallback for pure web environments
+// const isWeb = typeof document !== 'undefined' || Platform.OS === 'web' || !Platform.OS; // fallback for pure web environments
 
-const adapter = isWeb
-    ? new LokiJSAdapter({
+const adapter =   new LokiJSAdapter({
           schema,
           useWebWorker: false,
           useIncrementalIndexedDB: true,
@@ -32,15 +31,15 @@ const adapter = isWeb
           onSetUpError: (error) => {
               console.error('LokiJS setup failed', error);
           },
-      })
-    : new SQLiteAdapter({
-          schema,
-          //    migrations,
-          jsi: true,
-          onSetUpError: (error) => {
-              console.error('SQLite setup failed', error);
-          },
       });
+    // : new SQLiteAdapter({
+    //       schema,
+    //       //    migrations,
+    //       jsi: true,
+    //       onSetUpError: (error) => {
+    //           console.error('SQLite setup failed', error);
+    //       },
+    //   });
 
 // Then, make a Watermelon database from it
 export const database = new Database({

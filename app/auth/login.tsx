@@ -5,8 +5,7 @@ import { authenticateUser } from '@/db/services/userService';
 import { AuthData } from '@/types';
 import { router } from 'expo-router';
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
+import { ScrollView, View } from 'react-native';
 
 export default function SignInScreen() {
     const { isAuthenticated } = useAuth();
@@ -37,13 +36,13 @@ export default function SignInScreen() {
 
     return (
         <View className='flex-1 bg-gray-50'>
-            <KeyboardAwareScrollView className='flex-1' showsVerticalScrollIndicator={false}>
+            <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
                 <AuthHeader title='Welcome Back' subtitle='Sign in to your POS system' />
 
                 <View className='px-6 pb-8'>
                     <SignInForm onSignUp={handleSignUp} login={handleLogin} />
                 </View>
-            </KeyboardAwareScrollView>
+            </ScrollView>
         </View>
     );
 }

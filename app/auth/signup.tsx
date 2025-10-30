@@ -10,8 +10,7 @@ import { createUser } from '@/db/services/userService';
 import { StoreData, UserData } from '@/types';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
+import { ScrollView, View } from 'react-native';
 
 export default function CreateAccountScreen() {
     const [activeTab, setActiveTab] = useState<'personal' | 'business'>('personal');
@@ -70,7 +69,7 @@ export default function CreateAccountScreen() {
 
     return (
         <View className='flex-1 bg-gray-50'>
-            <KeyboardAwareScrollView className='flex-1' showsVerticalScrollIndicator={false}>
+            <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
                 <AuthHeader title='Create Account' subtitle='Set up your POS system' />
 
                 <View className='px-6 pb-8'>
@@ -88,7 +87,7 @@ export default function CreateAccountScreen() {
                         )}
                     </SignUpCard>
                 </View>
-            </KeyboardAwareScrollView>
+            </ScrollView>
         </View>
     );
 }
